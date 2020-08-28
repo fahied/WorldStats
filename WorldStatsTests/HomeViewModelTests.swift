@@ -7,27 +7,45 @@
 //
 
 import XCTest
+@testable import WorldStats
+
+
+let stub = [LifeExpectency(number: 0, country: "Sweden", both: 86.0, males: 88.0, females: 90.0),
+LifeExpectency(number: 0, country: "Norway", both: 85.0, males: 80.0, females: 90.0)]
+
+class LifeExpectencyRepositoryMock: LifeExpectencyRepository {
+    
+    override func refresh(completion: @escaping (Result<[LifeExpectency], NetworkError>) -> Void) {
+        completion(.success(stub))
+    }
+}
+
 
 class HomeViewModelTests: XCTestCase {
 
+    var viewModel: HomeViewModel!
+    
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        viewModel = HomeViewModel(repository: LifeExpectencyRepositoryMock())
     }
 
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    func testRecordCountIsCorrectAfterReloadingFromNetwork() throws {
+        
+        let expectation = self.expectation(description: "Reloading")
+        viewModel.reload { expectation.fulfill() }
+        waitForExpectations(timeout: 5, handler: nil)
+        
+        XCTAssert(viewModel.recordsCount == 2)
     }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    
+    func testProvideRightItemAfterSortingArray() throws {
+        
+        let expectation = self.expectation(description: "Reloading")
+        viewModel.reload { expectation.fulfill() }
+        waitForExpectations(timeout: 5, handler: nil)
+        
+        let item = viewModel.item(at: 0)
+        
+        XCTAssertEqual(item?.country, "Norway")
     }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
-
 }

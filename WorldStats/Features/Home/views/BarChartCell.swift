@@ -21,7 +21,7 @@ class BarChartCell: UICollectionViewCell {
     // MARK: - Life cycle
     override func awakeFromNib() {
         super.awakeFromNib()
-         barChartView.chartDescription?.font = UIFont.systemFont(ofSize: 18)
+        barChartView.chartDescription?.font = UIFont.systemFont(ofSize: 18)
         barChartView.chartDescription?.position = CGPoint(x: 100, y: 32)
     }
     
