@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		5D744D332926A1D9F7EA6C16 /* Pods_WorldStats.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39811A7CCB1ACACA002B8E15 /* Pods_WorldStats.framework */; };
+		9A30554C24F8C9BE00B8EAB4 /* LifeExpectency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A30554B24F8C9BE00B8EAB4 /* LifeExpectency.swift */; };
+		9A30554F24F8C9F800B8EAB4 /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A30554E24F8C9F800B8EAB4 /* NetworkRequest.swift */; };
+		9A30555124F8CA2500B8EAB4 /* LifeExpectencyRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A30555024F8CA2500B8EAB4 /* LifeExpectencyRequest.swift */; };
+		9A30555424F8CA5A00B8EAB4 /* JSONDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A30555324F8CA5A00B8EAB4 /* JSONDecoder.swift */; };
+		9A30555624F8CACB00B8EAB4 /* LifeExpectencyRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A30555524F8CACB00B8EAB4 /* LifeExpectencyRepository.swift */; };
 		9AF40E8624F8B6AA00E15B8F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF40E8524F8B6AA00E15B8F /* AppDelegate.swift */; };
 		9AF40E8824F8B6AA00E15B8F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF40E8724F8B6AA00E15B8F /* SceneDelegate.swift */; };
 		9AF40E8A24F8B6AA00E15B8F /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF40E8924F8B6AA00E15B8F /* HomeViewController.swift */; };
@@ -46,6 +51,11 @@
 		38569869198960359332CE8B /* Pods-WorldStats.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WorldStats.debug.xcconfig"; path = "Target Support Files/Pods-WorldStats/Pods-WorldStats.debug.xcconfig"; sourceTree = "<group>"; };
 		39811A7CCB1ACACA002B8E15 /* Pods_WorldStats.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WorldStats.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		84F4B7C5E55245304F37C316 /* Pods-WorldStatsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WorldStatsTests.release.xcconfig"; path = "Target Support Files/Pods-WorldStatsTests/Pods-WorldStatsTests.release.xcconfig"; sourceTree = "<group>"; };
+		9A30554B24F8C9BE00B8EAB4 /* LifeExpectency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifeExpectency.swift; sourceTree = "<group>"; };
+		9A30554E24F8C9F800B8EAB4 /* NetworkRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequest.swift; sourceTree = "<group>"; };
+		9A30555024F8CA2500B8EAB4 /* LifeExpectencyRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifeExpectencyRequest.swift; sourceTree = "<group>"; };
+		9A30555324F8CA5A00B8EAB4 /* JSONDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONDecoder.swift; sourceTree = "<group>"; };
+		9A30555524F8CACB00B8EAB4 /* LifeExpectencyRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifeExpectencyRepository.swift; sourceTree = "<group>"; };
 		9AF40E8224F8B6AA00E15B8F /* WorldStats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WorldStats.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AF40E8524F8B6AA00E15B8F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9AF40E8724F8B6AA00E15B8F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -107,6 +117,32 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		9A30554A24F8C9A500B8EAB4 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				9A30554B24F8C9BE00B8EAB4 /* LifeExpectency.swift */,
+				9A30555524F8CACB00B8EAB4 /* LifeExpectencyRepository.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		9A30554D24F8C9E200B8EAB4 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				9A30554E24F8C9F800B8EAB4 /* NetworkRequest.swift */,
+				9A30555024F8CA2500B8EAB4 /* LifeExpectencyRequest.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		9A30555224F8CA3C00B8EAB4 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				9A30555324F8CA5A00B8EAB4 /* JSONDecoder.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		9AF40E7924F8B6AA00E15B8F = {
 			isa = PBXGroup;
 			children = (
@@ -132,6 +168,8 @@
 		9AF40E8424F8B6AA00E15B8F /* WorldStats */ = {
 			isa = PBXGroup;
 			children = (
+				9A30555224F8CA3C00B8EAB4 /* Utils */,
+				9A30554D24F8C9E200B8EAB4 /* Network */,
 				9AF40EB524F8B8F500E15B8F /* Features */,
 				9AF40E8524F8B6AA00E15B8F /* AppDelegate.swift */,
 				9AF40E8724F8B6AA00E15B8F /* SceneDelegate.swift */,
@@ -172,6 +210,7 @@
 		9AF40EB624F8B90400E15B8F /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				9A30554A24F8C9A500B8EAB4 /* Data */,
 				9AF40EB724F8BB6E00E15B8F /* views */,
 				9AF40E8924F8B6AA00E15B8F /* HomeViewController.swift */,
 			);
@@ -442,8 +481,13 @@
 			files = (
 				9AF40EBD24F8BBC900E15B8F /* CameraCell.swift in Sources */,
 				9AF40E8A24F8B6AA00E15B8F /* HomeViewController.swift in Sources */,
+				9A30555424F8CA5A00B8EAB4 /* JSONDecoder.swift in Sources */,
+				9A30555624F8CACB00B8EAB4 /* LifeExpectencyRepository.swift in Sources */,
+				9A30555124F8CA2500B8EAB4 /* LifeExpectencyRequest.swift in Sources */,
+				9A30554F24F8C9F800B8EAB4 /* NetworkRequest.swift in Sources */,
 				9AF40EBB24F8BBB300E15B8F /* BarChartCell.swift in Sources */,
 				9AF40EB924F8BB9400E15B8F /* PieChartCell.swift in Sources */,
+				9A30554C24F8C9BE00B8EAB4 /* LifeExpectency.swift in Sources */,
 				9AF40E8624F8B6AA00E15B8F /* AppDelegate.swift in Sources */,
 				9AF40E8824F8B6AA00E15B8F /* SceneDelegate.swift in Sources */,
 			);
