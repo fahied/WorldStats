@@ -7,21 +7,22 @@
  */
 
 import UIKit
-
+import Charts
 // MARK: - Definitions -
 
 // MARK: - Type -
 
 class PieChartCell : UICollectionViewCell {
     
-    // MARK: - Properties
+    // MARK: - Outlets
+    @IBOutlet var pieChartView: PieChartView!
+    @IBOutlet var stepper: UIStepper!
     
-    // MARK: - Constructors
-    
-    // MARK: - Protected Methods
-    
-    // MARK: - Exposed Methods
-    
-    // MARK: - Overridden Methods
+    // MARK: - life cycle
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        //add shadow
+        pieChartView.chartDescription?.font = UIFont.systemFont(ofSize: 18)
+    }
     
 }

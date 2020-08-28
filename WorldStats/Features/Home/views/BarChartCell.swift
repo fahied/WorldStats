@@ -7,21 +7,24 @@
  */
 
 import UIKit
+import Charts
 
 // MARK: - Definitions -
 
 // MARK: - Type -
 
 class BarChartCell : UICollectionViewCell {
-
-// MARK: - Properties
-
-// MARK: - Constructors
-
-// MARK: - Protected Methods
-
-// MARK: - Exposed Methods
-
-// MARK: - Overridden Methods
-
+    
+    // MARK: - Outlets
+    @IBOutlet var barChartView: BarChartView!
+    @IBOutlet var slider: UISlider!
+    
+    // MARK: - Optional Closure
+    var onSliderChange: ((Int) -> Void)?
+    
+    // MARK: - Life cycle
+    override func awakeFromNib() {
+        super.awakeFromNib()
+    }
+    
 }

@@ -13,15 +13,10 @@ import UIKit
 // MARK: - Type -
 
 class CameraCell : UICollectionViewCell {
-
-// MARK: - Properties
-
-// MARK: - Constructors
-
-// MARK: - Protected Methods
-
-// MARK: - Exposed Methods
-
-// MARK: - Overridden Methods
-
+    
+    // MARK: - Properties
+    @IBOutlet var cameraButton: UIButton!
+    @IBOutlet var cancelButton: UIButton!
+    @IBOutlet var imageView: UIImageView!
+    
 }

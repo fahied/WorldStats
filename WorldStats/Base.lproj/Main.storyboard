@@ -26,29 +26,194 @@
                                     <inset key="sectionInset" minX="0.0" minY="32" maxX="0.0" maxY="32"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="pieChart" id="e4B-i5-iX2" customClass="PieChartCell" customModule="WorldStats" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="barChart" id="obK-rK-ppM" customClass="BarChartCell" customModule="WorldStats">
                                         <rect key="frame" x="0.0" y="32" width="320" height="400"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="pIn-bq-pVF">
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="VmO-ZF-hkZ">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="400"/>
-                                            <autoresizingMask key="autoresizingMask"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="meW-Jk-IuC">
+                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="400"/>
+                                                    <subviews>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pzZ-3a-tlS" customClass="BarChartView" customModule="Charts">
+                                                            <rect key="frame" x="16" y="16" width="288" height="288"/>
+                                                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="288" id="LSx-rg-zem"/>
+                                                            </constraints>
+                                                        </view>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rxq-Z7-2uX">
+                                                            <rect key="frame" x="16" y="328" width="288" height="48"/>
+                                                            <subviews>
+                                                                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="AEx-85-Hs3">
+                                                                    <rect key="frame" x="14" y="9" width="260" height="31"/>
+                                                                    <connections>
+                                                                        <action selector="sliderMoved:" destination="obK-rK-ppM" eventType="valueChanged" id="50z-9q-5wn"/>
+                                                                    </connections>
+                                                                </slider>
+                                                            </subviews>
+                                                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                            <constraints>
+                                                                <constraint firstItem="AEx-85-Hs3" firstAttribute="centerY" secondItem="Rxq-Z7-2uX" secondAttribute="centerY" id="661-M2-Fr5"/>
+                                                                <constraint firstItem="AEx-85-Hs3" firstAttribute="leading" secondItem="Rxq-Z7-2uX" secondAttribute="leading" constant="16" id="Fm5-4j-gEU"/>
+                                                                <constraint firstAttribute="trailing" secondItem="AEx-85-Hs3" secondAttribute="trailing" constant="16" id="yfp-sc-WcI"/>
+                                                            </constraints>
+                                                        </view>
+                                                    </subviews>
+                                                    <color key="backgroundColor" systemColor="systemGray6Color" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="320" id="35N-TY-eeN"/>
+                                                        <constraint firstItem="Rxq-Z7-2uX" firstAttribute="leading" secondItem="meW-Jk-IuC" secondAttribute="leading" constant="16" id="7cL-ij-Nfl"/>
+                                                        <constraint firstItem="pzZ-3a-tlS" firstAttribute="top" secondItem="meW-Jk-IuC" secondAttribute="top" constant="16" id="CAD-wt-4qQ"/>
+                                                        <constraint firstAttribute="trailing" secondItem="Rxq-Z7-2uX" secondAttribute="trailing" constant="16" id="CO6-y6-gvO"/>
+                                                        <constraint firstAttribute="trailing" secondItem="pzZ-3a-tlS" secondAttribute="trailing" constant="16" id="DwN-3e-syr"/>
+                                                        <constraint firstItem="pzZ-3a-tlS" firstAttribute="leading" secondItem="meW-Jk-IuC" secondAttribute="leading" constant="16" id="FAa-95-FwF"/>
+                                                        <constraint firstItem="Rxq-Z7-2uX" firstAttribute="top" secondItem="pzZ-3a-tlS" secondAttribute="bottom" constant="24" id="M2I-S9-0v4"/>
+                                                        <constraint firstAttribute="height" constant="400" id="Qaq-XL-pER"/>
+                                                        <constraint firstAttribute="bottom" secondItem="Rxq-Z7-2uX" secondAttribute="bottom" constant="24" id="ooz-ly-v9V"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="meW-Jk-IuC" firstAttribute="top" secondItem="VmO-ZF-hkZ" secondAttribute="top" id="7Ds-Zq-uQN"/>
+                                                <constraint firstItem="meW-Jk-IuC" firstAttribute="leading" secondItem="VmO-ZF-hkZ" secondAttribute="leading" id="Abn-gs-moJ"/>
+                                                <constraint firstAttribute="bottom" secondItem="meW-Jk-IuC" secondAttribute="bottom" id="JDr-Df-vyi"/>
+                                                <constraint firstAttribute="trailing" secondItem="meW-Jk-IuC" secondAttribute="trailing" id="jRZ-kk-UVz"/>
+                                            </constraints>
                                         </collectionViewCellContentView>
+                                        <connections>
+                                            <outlet property="barChartView" destination="pzZ-3a-tlS" id="c8T-vI-Dhd"/>
+                                            <outlet property="slider" destination="AEx-85-Hs3" id="LU5-eE-3jX"/>
+                                        </connections>
                                     </collectionViewCell>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="barChart" id="KL5-av-WiG" customClass="BarChartCell" customModule="WorldStats" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="pieChart" id="dPQ-Dy-LJu" customClass="PieChartCell" customModule="WorldStats">
                                         <rect key="frame" x="640" y="32" width="320" height="400"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Wkf-Gg-eFc">
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="HvL-KN-bpG">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="400"/>
-                                            <autoresizingMask key="autoresizingMask"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8db-38-jqS">
+                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="400"/>
+                                                    <subviews>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zGD-id-xcn" customClass="PieChartView" customModule="Charts">
+                                                            <rect key="frame" x="16" y="16" width="288" height="288"/>
+                                                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="288" id="Y9C-ye-0Jw"/>
+                                                            </constraints>
+                                                        </view>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="215-Wm-IKG">
+                                                            <rect key="frame" x="16" y="328" width="288" height="48"/>
+                                                            <subviews>
+                                                                <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="blb-eJ-x6f">
+                                                                    <rect key="frame" x="97" y="8" width="94" height="32"/>
+                                                                    <connections>
+                                                                        <action selector="stepperTapped:" destination="dPQ-Dy-LJu" eventType="valueChanged" id="9ox-RV-FRw"/>
+                                                                    </connections>
+                                                                </stepper>
+                                                            </subviews>
+                                                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                            <constraints>
+                                                                <constraint firstItem="blb-eJ-x6f" firstAttribute="centerX" secondItem="215-Wm-IKG" secondAttribute="centerX" id="bH8-G2-yia"/>
+                                                                <constraint firstItem="blb-eJ-x6f" firstAttribute="centerY" secondItem="215-Wm-IKG" secondAttribute="centerY" id="dGe-hW-pO6"/>
+                                                            </constraints>
+                                                        </view>
+                                                    </subviews>
+                                                    <color key="backgroundColor" systemColor="systemGray6Color" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="320" id="Ahy-1r-NBV"/>
+                                                        <constraint firstAttribute="bottom" secondItem="215-Wm-IKG" secondAttribute="bottom" constant="24" id="Rwx-gh-AiK"/>
+                                                        <constraint firstItem="zGD-id-xcn" firstAttribute="leading" secondItem="8db-38-jqS" secondAttribute="leading" constant="16" id="T0k-eu-wGc"/>
+                                                        <constraint firstAttribute="trailing" secondItem="215-Wm-IKG" secondAttribute="trailing" constant="16" id="TYp-we-D14"/>
+                                                        <constraint firstAttribute="trailing" secondItem="zGD-id-xcn" secondAttribute="trailing" constant="16" id="Uih-Wz-vde"/>
+                                                        <constraint firstItem="zGD-id-xcn" firstAttribute="top" secondItem="8db-38-jqS" secondAttribute="top" constant="16" id="aQb-eB-QYq"/>
+                                                        <constraint firstItem="215-Wm-IKG" firstAttribute="leading" secondItem="8db-38-jqS" secondAttribute="leading" constant="16" id="aoC-kO-mMf"/>
+                                                        <constraint firstItem="215-Wm-IKG" firstAttribute="top" secondItem="zGD-id-xcn" secondAttribute="bottom" constant="24" id="rYJ-hF-ArY"/>
+                                                        <constraint firstAttribute="height" constant="400" id="yBP-ld-3di"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="8db-38-jqS" firstAttribute="leading" secondItem="HvL-KN-bpG" secondAttribute="leading" id="DJi-KH-A7B"/>
+                                                <constraint firstItem="8db-38-jqS" firstAttribute="top" secondItem="HvL-KN-bpG" secondAttribute="top" id="aIP-Co-b80"/>
+                                                <constraint firstAttribute="trailing" secondItem="8db-38-jqS" secondAttribute="trailing" id="d79-CH-Kmt"/>
+                                                <constraint firstAttribute="bottom" secondItem="8db-38-jqS" secondAttribute="bottom" id="fvp-Fm-jxq"/>
+                                            </constraints>
                                         </collectionViewCellContentView>
+                                        <connections>
+                                            <outlet property="pieChartView" destination="zGD-id-xcn" id="lzt-7H-mcy"/>
+                                            <outlet property="stepper" destination="blb-eJ-x6f" id="EF7-RQ-OaZ"/>
+                                        </connections>
                                     </collectionViewCell>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="camera" id="r90-uM-hy4" customClass="CameraCell" customModule="WorldStats" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="camera" id="pPa-YS-mJU" customClass="CameraCell" customModule="WorldStats">
                                         <rect key="frame" x="0.0" y="464" width="320" height="400"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="pGJ-P8-dWZ">
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="bnv-J4-O4e">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="400"/>
-                                            <autoresizingMask key="autoresizingMask"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GfP-F1-q2t">
+                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="400"/>
+                                                    <subviews>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="s8p-Fc-kdn">
+                                                            <rect key="frame" x="16" y="16" width="288" height="288"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="288" id="7af-DO-HZ9"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oz3-xW-10G">
+                                                            <rect key="frame" x="16" y="328" width="288" height="48"/>
+                                                            <subviews>
+                                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="M6c-8D-LAu">
+                                                                    <rect key="frame" x="32" y="9" width="224" height="30"/>
+                                                                    <subviews>
+                                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="69R-1G-rAg">
+                                                                            <rect key="frame" x="0.0" y="0.0" width="54" height="30"/>
+                                                                            <state key="normal" title="Camera"/>
+                                                                        </button>
+                                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kc0-YK-JlG">
+                                                                            <rect key="frame" x="176" y="0.0" width="48" height="30"/>
+                                                                            <state key="normal" title="Cancel"/>
+                                                                        </button>
+                                                                    </subviews>
+                                                                </stackView>
+                                                            </subviews>
+                                                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                            <constraints>
+                                                                <constraint firstItem="M6c-8D-LAu" firstAttribute="leading" secondItem="oz3-xW-10G" secondAttribute="leading" constant="32" id="1xN-PA-ePi"/>
+                                                                <constraint firstItem="M6c-8D-LAu" firstAttribute="centerY" secondItem="oz3-xW-10G" secondAttribute="centerY" id="HxE-7C-pn2"/>
+                                                                <constraint firstAttribute="trailing" secondItem="M6c-8D-LAu" secondAttribute="trailing" constant="32" id="y4X-D9-Wcc"/>
+                                                            </constraints>
+                                                        </view>
+                                                    </subviews>
+                                                    <color key="backgroundColor" systemColor="systemGray6Color" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstItem="s8p-Fc-kdn" firstAttribute="leading" secondItem="GfP-F1-q2t" secondAttribute="leading" constant="16" id="07f-3k-0Rv"/>
+                                                        <constraint firstAttribute="trailing" secondItem="s8p-Fc-kdn" secondAttribute="trailing" constant="16" id="7Su-Qh-l35"/>
+                                                        <constraint firstItem="oz3-xW-10G" firstAttribute="top" secondItem="s8p-Fc-kdn" secondAttribute="bottom" constant="24" id="KZa-7l-GJc"/>
+                                                        <constraint firstAttribute="height" constant="400" id="LS3-bG-9CA"/>
+                                                        <constraint firstItem="oz3-xW-10G" firstAttribute="leading" secondItem="GfP-F1-q2t" secondAttribute="leading" constant="16" id="PGO-E5-uJm"/>
+                                                        <constraint firstAttribute="width" constant="320" id="TLz-UE-4MS"/>
+                                                        <constraint firstAttribute="trailing" secondItem="oz3-xW-10G" secondAttribute="trailing" constant="16" id="bIK-rr-cGj"/>
+                                                        <constraint firstAttribute="bottom" secondItem="oz3-xW-10G" secondAttribute="bottom" constant="24" id="dtO-ek-nz2"/>
+                                                        <constraint firstItem="s8p-Fc-kdn" firstAttribute="top" secondItem="GfP-F1-q2t" secondAttribute="top" constant="16" id="yeN-YU-PQe"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="GfP-F1-q2t" firstAttribute="top" secondItem="bnv-J4-O4e" secondAttribute="top" id="356-vJ-UIv"/>
+                                                <constraint firstAttribute="trailing" secondItem="GfP-F1-q2t" secondAttribute="trailing" id="AlM-GP-Olm"/>
+                                                <constraint firstItem="GfP-F1-q2t" firstAttribute="leading" secondItem="bnv-J4-O4e" secondAttribute="leading" id="Aqq-hG-z3F"/>
+                                                <constraint firstAttribute="bottom" secondItem="GfP-F1-q2t" secondAttribute="bottom" id="gXE-Qx-fLn"/>
+                                            </constraints>
                                         </collectionViewCellContentView>
+                                        <connections>
+                                            <outlet property="cameraButton" destination="69R-1G-rAg" id="iNl-em-D7H"/>
+                                            <outlet property="cancelButton" destination="Kc0-YK-JlG" id="tob-rV-fP9"/>
+                                            <outlet property="imageView" destination="s8p-Fc-kdn" id="Eee-4y-AA5"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                                 <connections>
