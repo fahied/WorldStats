@@ -9,35 +9,115 @@
 import UIKit
 
 class HomeViewController: UIViewController {
-
-    enum Rows: String, CaseIterable {
+    
+    // MARK: - Properties
+    @IBOutlet var collectionView: UICollectionView!
+    
+    private var viewModel: HomeViewModel
+    private var camera: CameraType
+    
+    private enum Rows: String, CaseIterable {
         case pieChart
         case barChart
         case camera
         
         var cellIdentifier: String {
-            self.rawValue
+            return self.rawValue
         }
     }
     
-    @IBOutlet var collectionView: UICollectionView!
+    // MARK: - Initilizer with Dependency Injected
+    init?(coder: NSCoder, viewModel: HomeViewModel, camera: CameraType) {
+        self.viewModel = viewModel
+        self.camera = camera
+        super.init(coder: coder)
+    }
     
+    required init?(coder: NSCoder) {
+        fatalError("You must create this view controller with a datasource and user.")
+    }
+    
+    // MARK: - View LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        title = "Home"
+        
+        // reload data from network and refresh view
+        viewModel.reload {
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
+        }
     }
 }
 
-extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+// MARK: - UICollectionViewDataSource
+extension HomeViewController: UICollectionViewDataSource {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        Rows.allCases.count
+        return Rows.allCases.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let rowType = Rows.allCases[indexPath.row]
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: rowType.cellIdentifier, for: indexPath)
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: rowType.cellIdentifier , for: indexPath)
+        
+        switch rowType {
+            
+        case .pieChart:
+            if let pieCell = cell as? PieChartCell,
+                let item = viewModel.item(at: indexPath.row) {
+                pieCell.configure(viewModel: PieChartViewModel(with: item))
+                //using delegate pattern to retrieve data
+                pieCell.delegate = self
+            }
+            
+        case .barChart:
+            if let barCell = cell as? BarChartCell,
+                let item = viewModel.item(at: indexPath.row) {
+                let vm = BarChartViewModel(with: item)
+                barCell.configure(viewModel:vm)
+                barCell.slider.maximumValue = Float(viewModel.recordsCount - 1)
+                // Using clousure to retrieve data
+                barCell.onSliderChange =  { [weak self] value in
+                    if let item = self?.viewModel.item(at: value) {
+                        barCell.configure(viewModel: BarChartViewModel(with: item))
+                    }
+                }
+            }
+            
+        case .camera:
+            if let camCell = cell as? CameraCell {
+                // Using Target-Action pattern to capture user action
+                camCell.cameraButton.addTarget(self, action: #selector(showCamera), for: .touchUpInside)
+                camera.onImageCaputured = {[weak camCell] image in
+                    camCell?.imageView.image = image
+                }
+            }
+        }
         return cell
+    }
+}
+
+// MARK: - PieChartCellDelegate
+extension HomeViewController: PieChartCellDelegate {
+    func didChange(cell: PieChartCell, steppervalue: Int) {
+        
+        if let item = viewModel.item(at: steppervalue) {
+            let viewModel = PieChartViewModel(with: item)
+            cell.configure(viewModel: viewModel)
+        }
+    }
+}
+
+// MARK: - Camera Operations
+extension HomeViewController {
+    
+    @objc func showCamera() {
+        camera.showCamera(on: self)
     }
 }
 

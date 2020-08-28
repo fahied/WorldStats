@@ -8,15 +8,10 @@
 
 import UIKit
 
-// MARK: - Definitions -
-
-// MARK: - Type -
-
 class CameraCell : UICollectionViewCell {
     
     // MARK: - Properties
     @IBOutlet var cameraButton: UIButton!
     @IBOutlet var cancelButton: UIButton!
     @IBOutlet var imageView: UIImageView!
-    
 }

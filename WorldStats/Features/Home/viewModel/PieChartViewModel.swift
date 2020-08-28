@@ -7,21 +7,33 @@
  */
 
 import UIKit
-
-// MARK: - Definitions -
-
-// MARK: - Type -
+import Charts
 
 struct PieChartViewModel {
+    
+    // MARK: - Properties
+    let entries: [PieChartDataEntry]
+    let chartlabel: String
+    let chartDescription: String
+    let colors: [UIColor]
+    
+    var data: PieChartData {
+        let dataSet  = PieChartDataSet(entries: entries, label: chartlabel)
+        dataSet.colors = colors
+        return PieChartData(dataSet: dataSet)
+    }
+}
 
-// MARK: - Properties
-
-// MARK: - Constructors
-
-// MARK: - Protected Methods
-
-// MARK: - Exposed Methods
-
-// MARK: - Overridden Methods
-
+// MARK: - Helper
+extension PieChartViewModel {
+    
+    init(with lifeExpectency: LifeExpectency) {
+        let maleEntry = PieChartDataEntry(value: lifeExpectency.males, label: "Male")
+        let femaleEntry = PieChartDataEntry(value: lifeExpectency.females, label: "Female")
+        let bothEntry = PieChartDataEntry(value: lifeExpectency.both, label: "Both")
+        entries = [maleEntry, femaleEntry, bothEntry]
+        chartlabel = "Life Expectency in Years"
+        chartDescription = lifeExpectency.country
+        colors = ColorPalette().chartColors
+    }
 }

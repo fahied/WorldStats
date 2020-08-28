@@ -19,7 +19,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             let window = UIWindow(windowScene: windowScene)
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             
-            let vc = storyboard.instantiateViewController(identifier: "home")
+            let repository = LifeExpectencyRepository()
+            let homeViewModel = HomeViewModel(repository: repository)
+            var camera: CameraType = CameraController()
+            #if targetEnvironment(simulator)
+            camera =  MockCameraController()
+            #endif
+            // Inject Dependencies using StoryBoard - iOS 13 feature
+            let vc = storyboard.instantiateViewController(identifier: "home", creator: { coder in
+                return HomeViewController(coder: coder, viewModel: homeViewModel, camera: camera)
+            })
             let navigationController = UINavigationController(rootViewController: vc)
             window.rootViewController = navigationController
             self.window = window

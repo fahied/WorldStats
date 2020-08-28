@@ -9,11 +9,7 @@
 import UIKit
 import Charts
 
-// MARK: - Definitions -
-
-// MARK: - Type -
-
-class BarChartCell : UICollectionViewCell {
+class BarChartCell: UICollectionViewCell {
     
     // MARK: - Outlets
     @IBOutlet var barChartView: BarChartView!
@@ -25,6 +21,19 @@ class BarChartCell : UICollectionViewCell {
     // MARK: - Life cycle
     override func awakeFromNib() {
         super.awakeFromNib()
+         barChartView.chartDescription?.font = UIFont.systemFont(ofSize: 18)
+        barChartView.chartDescription?.position = CGPoint(x: 100, y: 32)
     }
     
+    // MARK: - Exposed Function
+    func configure(viewModel: BarChartViewModel) {
+        barChartView.data = viewModel.data
+        barChartView.chartDescription?.text = viewModel.chartDescription
+        barChartView.notifyDataSetChanged()
+    }
+    
+    // MARK: - Target Action
+    @IBAction func sliderMoved(_ sender: UISlider) {
+        onSliderChange?(Int(sender.value))
+    }
 }
